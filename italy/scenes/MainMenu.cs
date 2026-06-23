@@ -1,19 +1,12 @@
-using Godot;
-using System;
+extends Control
 
-public partial class MainMenu : Control
-{
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-	private void _on_button_pressed()
-	{
-		GetTree().ChangeSceneToFile("res://scenes/game.tscn");
-	}
-}
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
