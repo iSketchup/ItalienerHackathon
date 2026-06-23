@@ -17,8 +17,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exrr5"]
 size = Vector2(116, 111)
 
+[sub_resource type="LabelSettings" id="LabelSettings_exrr5"]
+font_color = Color(0.10500005, 0.63, 0, 1)
+
 [node name="Trash" type="Area2D" unique_id=1419466466]
 script = ExtResource("1_3xixx")
+float_strength = null
+float_speed = null
 lifetime = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=746792676]
@@ -27,5 +32,12 @@ sprite_frames = SubResource("SpriteFrames_2cq4d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302006621]
 position = Vector2(-2, 0.5)
 shape = SubResource("RectangleShape2D_exrr5")
+
+[node name="Label" type="Label" parent="." unique_id=1851197371]
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 22.0
+offset_bottom = 11.0
+label_settings = SubResource("LabelSettings_exrr5")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
