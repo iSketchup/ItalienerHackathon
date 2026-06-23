@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://bfeelo1dj6cyb"]
 
 [ext_resource type="Script" uid="uid://kmk551t7842a" path="res://scenes/game.gd" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://dcx7ml1yh055r" path="res://assets/icon.svg" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://xkjexyem0ocf" path="res://assets/Media (1).jpeg" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://d08nkeid0j74v" path="res://background.tscn" id="2_yqjtg"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lnu2h"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_lbhrr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_yqjtg")
+"texture": ExtResource("2_lnu2h")
 }],
 "loop": true,
 "name": &"default",
@@ -16,11 +17,22 @@ animations = [{
 
 [node name="game" type="Node2D" unique_id=2020839237]
 script = ExtResource("1_uwrxv")
-spawn_area = Rect2(-10, 100, 20, 200)
+spawn_area = Rect2(-10, 100, 20, 400)
+min_spawn_time = 1.0
+max_spawn_time = 2.0
+min_speed = 67.0
+max_speed = 180.0
 
-[node name="Background" type="AnimatedSprite2D" parent="." unique_id=363396733]
-sprite_frames = SubResource("SpriteFrames_lnu2h")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=40476167]
+position = Vector2(579.2782, 309.22787)
+rotation = -1.5669199
+scale = Vector2(1.3225737, 1)
+sprite_frames = SubResource("SpriteFrames_lbhrr")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=357305294]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Background" parent="." unique_id=1012263600 instance=ExtResource("2_yqjtg")]
+position = Vector2(300.99997, 1653)
+rotation = -1.5669199
