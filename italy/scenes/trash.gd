@@ -1,11 +1,19 @@
-extends Node2D
+class_name Trash
+extends Area2D
 
 var velocity := Vector2.ZERO
 var time := 0.0
+var was_clicked := false
 
 @export var float_strength := 12.0
 @export var float_speed := 2.0
 @export var lifetime := 12.0
+
+signal scored(points: int)
+
+
+func _ready() -> void:
+	$Label.visible = false
 
 
 func setup(direction: int, speed: float) -> void:
@@ -23,8 +31,25 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func get_point_value() -> int:
+	return 67
+
+
+func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
+	if was_clicked:
+		return
+
 	if event.is_action_pressed("mouseclickleft"):
-		print("trash clicked")
+		was_clicked = true
+
+		var points := get_point_value()
+		scored.emit(points)
+
+		$Label.text = "+%d" % points
+		$Label.visible = true
+
+		$AnimatedSprite2D.visible = false
+		$CollisionShape2D.set_deferred("disabled", true)
+
+		await get_tree().create_timer(0.4).timeout
 		queue_free()
-	return
