@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://d1w74w7xnuhas"]
 
+[ext_resource type="Script" uid="uid://cj0heg0k532a1" path="res://scenes/trash.gd" id="1_3xixx"]
+
 [node name="Trash" type="Node2D" unique_id=192968561]
+script = ExtResource("1_3xixx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=746792676]
