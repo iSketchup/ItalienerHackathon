@@ -1,11 +1,30 @@
 extends Node2D
 
+var velocity := Vector2.ZERO
+var time := 0.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var float_strength := 12.0
+@export var float_speed := 2.0
+@export var lifetime := 12.0
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func setup(direction: int, speed: float) -> void:
+	velocity = Vector2(direction * speed, 0)
+
+
 func _process(delta: float) -> void:
-	pass
+	time += delta
+
+	position += velocity * delta
+	position.y += sin(time * float_speed) * float_strength * delta
+
+	lifetime -= delta
+	if lifetime <= 0.0:
+		queue_free()
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("mouseclickleft"):
+		print("trash clicked")
+		queue_free()
+	return

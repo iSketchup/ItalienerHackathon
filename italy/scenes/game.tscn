@@ -1,5 +1,23 @@
 [gd_scene format=3 uid="uid://bfeelo1dj6cyb"]
 
+[ext_resource type="Script" uid="uid://kmk551t7842a" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dcx7ml1yh055r" path="res://assets/icon.svg" id="2_yqjtg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnu2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yqjtg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="game" type="Node2D" unique_id=2020839237]
+script = ExtResource("1_uwrxv")
+min_spawn_time = 1.0
+max_spawn_time = 2.0
 
 [node name="Background" type="AnimatedSprite2D" parent="." unique_id=363396733]
+sprite_frames = SubResource("SpriteFrames_lnu2h")

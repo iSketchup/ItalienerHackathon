@@ -1,8 +1,31 @@
 [gd_scene format=3 uid="uid://d1w74w7xnuhas"]
 
 [ext_resource type="Script" uid="uid://cj0heg0k532a1" path="res://scenes/trash.gd" id="1_3xixx"]
+[ext_resource type="Texture2D" uid="uid://dcx7ml1yh055r" path="res://assets/icon.svg" id="2_exrr5"]
 
-[node name="Trash" type="Node2D" unique_id=192968561]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cq4d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_exrr5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exrr5"]
+size = Vector2(116, 111)
+
+[node name="Trash" type="Area2D" unique_id=1419466466]
 script = ExtResource("1_3xixx")
+lifetime = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=746792676]
+sprite_frames = SubResource("SpriteFrames_2cq4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1302006621]
+position = Vector2(-2, 0.5)
+shape = SubResource("RectangleShape2D_exrr5")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
